@@ -1,12 +1,14 @@
 class ToysController < ApplicationController
   # GET /toys
   # GET /toys.xml
+  # GET /toys.json
   def index
     @toys = Toy.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @toys }
+      format.json { render :json => @toys }
     end
   end
 
@@ -18,6 +20,7 @@ class ToysController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @toy }
+      format.json { render :json => @toy }
     end
   end
 
@@ -44,7 +47,7 @@ class ToysController < ApplicationController
 
     respond_to do |format|
       if @toy.save
-        format.html { redirect_to(@toy, :notice => 'Toy was successfully created.') }
+        format.html { redirect_to("/index.html", :notice => 'Toy was successfully created.') }
         format.xml  { render :xml => @toy, :status => :created, :location => @toy }
       else
         format.html { render :action => "new" }
@@ -60,7 +63,7 @@ class ToysController < ApplicationController
 
     respond_to do |format|
       if @toy.update_attributes(params[:toy])
-        format.html { redirect_to(@toy, :notice => 'Toy was successfully updated.') }
+        format.html { redirect_to("/index.html?success=true", :notice => 'Toy was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -76,7 +79,7 @@ class ToysController < ApplicationController
     @toy.destroy
 
     respond_to do |format|
-      format.html { redirect_to(toys_url) }
+      format.html { redirect_to("/index.html?success=true") }
       format.xml  { head :ok }
     end
   end

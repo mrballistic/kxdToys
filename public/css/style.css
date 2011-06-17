@@ -115,6 +115,62 @@ html {
 	width: 756px;
 }
 
+#editHeader {
+
+	height: 32px;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-topleft: 10px;
+	background-color: #fff;
+}
+
+
+.actions {
+
+	float:right;
+	margin-right: 87px;
+
+}
+
+.outerForm {
+
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	margin-right: 100px;
+
+}
+
+.stdForm {
+
+	font-family: 'Droid Sans', arial, serif;
+	font-size: 20px;
+	text-shadow: 0px 1px 1px #f4f4f4;
+	list-style: none;
+	color:#666;
+	margin:0 0 7px 0;
+	border:1px solid #d8d8d8;
+	width:340px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius: 5px;
+	padding:3px 5px 3px 10px;
+
+}
+
+.formTitle {
+	font-family: 'Droid Sans', arial, serif;
+	font-size: 14px;
+	text-shadow: 0px 1px 1px #f4f4f4;
+	list-style: none;
+	width: 50px;
+	display: inline-block;
+
+
+}
+
 
 #tableHeader {
 	
@@ -202,7 +258,7 @@ html {
 
 .c1 {
 
-	width: 242px;
+	width: 249px;
 	font-size: 18px !important;
 	padding: 0px;
 	margin: 0px;
@@ -232,6 +288,7 @@ html {
 
 	padding: 0px;
 	margin: 0px;
+	width: 149px;
 	cursor: pointer;
 
 }
@@ -239,6 +296,38 @@ html {
 .stripe {
 
 	background-color: #eee;
+
+}
+
+.activeStripe {
+
+	background-color: #d9f1ff;
+
+}
+
+.edit {
+
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+	width: 16px; 
+	height: 16px; 
+	background-image: url(smoothness/images/ui-icons_222222_256x240.png);
+	background-position: -16px -144px; 
+	background-repeat: no-repeat;
+	opacity: .0;
+	filter:Alpha(Opacity=0);
+	cursor: pointer;
+
+}
+
+#ajaxLoading {
+	
+	height: 300px;
+	width: 756px;
+	background-image: url('../img/base/ajaxloader.gif');
+	background-position: center center;
+	background-repeat: no-repeat;
 
 }
 
