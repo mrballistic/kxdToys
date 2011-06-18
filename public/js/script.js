@@ -8,10 +8,17 @@ $(document).ready(function(){
 	// jquery says - let's play!
 
 	$(document).bind("contextmenu",function(e){ // turn off right click menu
-        return false;
-    });
+      	  return false;
+    	});
+    	
+    	
+    	
+    	
 
 	if(mainPage){
+
+
+		$( "#msg" ).addClass('hidden');
 
 		$.ajax({
 	        url: '/toys.json', 
@@ -49,12 +56,33 @@ function renderEdit() {
 	$('.submitButton').button({
 	
 		icons: {
-                primary: "ui-icon-gear"
+               		primary: "ui-icon-circle-check"
             },
-        label: "Update This"
+       		label: "Update"
+
+	});
+	
+	$('.deleteButton').button({
+		
+		icons: {
+	                primary: "ui-icon-circle-close"
+	            },
+	        label: "Delete"
+
+	});
+	
+	$('.new_toy').find('.submitButton').button({
+	
+		label: 'Create'
+	
+	});
+	
+	$('.new_toy').find('.deleteButton').addClass('hidden');
 	
 	
-	
+	$('.submitButton').click(function(){	
+		$('.edit_toy').submit();
+		$('.new_toy').submit();
 	});
 	
 	
@@ -122,13 +150,22 @@ function renderPage(){
 		owner = owner[1];
 		
 		window.location = 'toys/' + owner + '/edit';
-	
-	
 	})
 	
 	getParams();
 	
+	$('#addToy').button({
+            icons: {
+                primary: "ui-icon-plus"
+            }
+        });
 	
+	$('#addToy').click(function(){
+	
+	
+		window.location = 'toys/new';
+	
+	});
 	
 	
 	
@@ -149,6 +186,8 @@ var getParams = function(){
 	var timeout = 0;
 	
 	if(urlParams){
+	
+		$( "#msg" ).removeClass('hidden');
 	
 		$( "#msg" ).dialog({
 			modal: true,

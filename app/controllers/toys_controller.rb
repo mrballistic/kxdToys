@@ -47,7 +47,7 @@ class ToysController < ApplicationController
 
     respond_to do |format|
       if @toy.save
-        format.html { redirect_to("/index.html", :notice => 'Toy was successfully created.') }
+        format.html { redirect_to("/index.html?success=true", :notice => 'Toy was successfully created.') }
         format.xml  { render :xml => @toy, :status => :created, :location => @toy }
       else
         format.html { render :action => "new" }

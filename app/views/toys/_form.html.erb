@@ -30,7 +30,9 @@
 	  </div>
 
 	  <div class="actions">
-	    <%= f.submit( :class => 'submitButton' ) %>
+	    <a class="deleteButton" href="." data-confirm="Are you sure?" data-method="delete" rel="nofollow">delete</a>
+	    <a class="submitButton" href="#" rel="nofollow">submit</a>
+	    <!-- <%= f.submit( :class => 'submitButton' ) %> -->
 	  </div>
   </div>
 <% end %>

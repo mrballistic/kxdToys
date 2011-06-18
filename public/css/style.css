@@ -107,6 +107,21 @@ html {
 
 }
 
+.bHolder {
+	width:756px;
+	background-color: #fff;
+	padding-top: 20px;
+	height:40px;
+	
+}
+
+#addToy {
+
+	float: right;
+	cursor: pointer;
+	margin-right: 20px;
+	
+}
 
 #main {
 	
