@@ -4,20 +4,15 @@ var gear = new Object();
 var theURL = 'json/eq.json';
 var ref;
 
+
 $(document).ready(function(){
 	// jquery says - let's play!
 
 	$(document).bind("contextmenu",function(e){ // turn off right click menu
       	  return false;
     	});
-    	
-    	
-    	
-    	
 
 	if(mainPage){
-
-
 		$( "#msg" ).addClass('hidden');
 
 		$.ajax({
@@ -28,6 +23,7 @@ $(document).ready(function(){
 	            {
 	
 					gear = _gear;
+					gear.sort(compareNames);
 					renderPage();            
 	    
 	            },
@@ -88,18 +84,50 @@ function renderEdit() {
 	
 }
 
-function compareTags(a, b) { 
-    // used to sort tags by popularity
-    if (parseInt(a.Tag_Count) < parseInt(b.Tag_Count)) {return 1}
-    if (parseInt(a.Tag_Count) > parseInt(b.Tag_Count)) {return -1}
-    return 0;
+function compareNames(a, b) { 
+
+    var nameA=a.toy.name.toLowerCase(), nameB=b.toy.name.toLowerCase()
+	if (nameA < nameB) //sort string ascending
+  		return -1 
+ 	if (nameA > nameB)
+  		return 1
+ 	return 0 //default return value (no sorting)
+}
+
+function compareOwner(a, b) { 
+    var nameA=a.toy.owner.toLowerCase(), nameB=b.toy.owner.toLowerCase()
+	if (nameA < nameB) //sort string ascending
+  		return -1 
+ 	if (nameA > nameB)
+  		return 1
+ 	return 0 //default return value (no sorting)
 }
 
 
-function renderPage(){
+function compareID(a, b) { 
+    var nameA=a.toy.tag.toLowerCase(), nameB=b.toy.tag.toLowerCase()
+	if (nameA < nameB) //sort string ascending
+  		return -1 
+ 	if (nameA > nameB)
+  		return 1
+ 	return 0 //default return value (no sorting)
+}
+
+function compareUser(a, b) { 
+    var nameA=a.toy.user.toLowerCase(), nameB=b.toy.user.toLowerCase()
+	if (nameA > nameB) //sort string ascending
+  		return -1 
+ 	if (nameA < nameB)
+  		return 1
+ 	return 0 //default return value (no sorting)
+}
+
+
+function buildTable(){
+
 	var newTable = '';
 	var toyLength = gear.length;
-	
+
 	for(i=0; i<toyLength; i++){
 	
 		var theClass = 'eq';
@@ -118,7 +146,7 @@ function renderPage(){
 	}
 	
 	$('#contentArea').html(newTable);
-
+	
 	$('.edit').hover(function(){
 	
 		$(this).fadeTo('fast', .8);
@@ -128,11 +156,6 @@ function renderPage(){
 		$(this).fadeTo('fast', .5);
 	
 	});
-
-
-	$('#nav').find('li').click(function(){
-		var whichOne = this.id;
-	})
 	
 	$('.eq').hover(function(){
 			$(this).find('.edit').fadeTo('fast', .5);
@@ -151,6 +174,41 @@ function renderPage(){
 		
 		window.location = 'toys/' + owner + '/edit';
 	})
+
+
+}
+
+function renderPage(){
+	
+	
+	buildTable();
+
+	$('#nav').find('li').click(function(){
+		var whichOne = this.id;
+		
+		switch(whichOne){
+		
+			case "name" : 
+				gear.sort(compareNames);
+				break;
+			case "owner":
+				gear.sort(compareOwner);
+				break;
+			case "tracking":
+				gear.sort(compareID);
+				break;
+			case "loaned":
+				gear.sort(compareUser);
+				break;
+			default:
+				return;
+		}
+		
+		buildTable();
+
+	})
+	
+
 	
 	getParams();
 	
@@ -166,11 +224,6 @@ function renderPage(){
 		window.location = 'toys/new';
 	
 	});
-	
-	
-	
-	
-
 }
 
 
