@@ -21,8 +21,22 @@ A Ruby on Rails application for managing toy information in a collection. This a
 1. Clone the repository
 2. Run `bundle install` to install dependencies
 3. Run `bin/rails db:migrate` to set up the database
-4. Start the server with `bin/rails server`
+4. Start the server using one of these methods:
+   - Run the included start script: `./start.sh`
+   - Or manually start the server: `bin/rails server`
 5. Visit `http://localhost:3000` in your browser
+
+### About the Start Script
+
+The repository includes a convenient `start.sh` script that:
+- Installs all dependencies with `bundle install`
+- Runs any pending database migrations with `bin/rails db:migrate`
+- Starts the Rails server
+
+To use it, simply run:
+```bash
+./start.sh
+```
 
 ## Database Structure
 
