@@ -1,5 +1,5 @@
-class CreateToys < ActiveRecord::Migration
-  def self.up
+class CreateToys < ActiveRecord::Migration[7.1]
+  def change
     create_table :toys do |t|
       t.string :name
       t.string :user
@@ -8,9 +8,5 @@ class CreateToys < ActiveRecord::Migration
 
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :toys
   end
 end

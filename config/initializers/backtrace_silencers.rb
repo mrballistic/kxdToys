@@ -5,3 +5,6 @@
 
 # You can also remove all the silencers if you're trying to debug a problem that might stem from framework code.
 # Rails.backtrace_cleaner.remove_silencers!
+
+# You can also add filters to your backtrace cleaner, like excluding vendor or gems:
+# Rails.backtrace_cleaner.add_filter { |line| line.gsub(/^\/app\//, '/') }

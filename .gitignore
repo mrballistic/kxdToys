@@ -1,5 +1,66 @@
-.bundle
-log/*.log
-tmp/
+# See https://help.github.com/articles/ignoring-files for more about ignoring files.
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore storage (uploaded files in development and test)
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/.keep
+
+# Ignore master key for decrypting credentials and all encrypted secrets
+/config/master.key
+/config/credentials/*.key
+
+# Ignore SQLite database files
+/db/*.sqlite3
+/db/*.sqlite3-*
+
+# Ignore precompiled assets
+/public/assets
+
+# Ignore yarn files
+/yarn-error.log
+/yarn-debug.log*
+.yarn-integrity
+
+# Ignore node modules
+/node_modules
+
+# Ignore macOS system files
 .DS_Store
+
+# Ignore environment variables
+.env
+.env.*
+!.env.example
+
+# Ignore Byebug command history file.
+.byebug_history
+
+# Ignore IDE files
+/.idea
+/.vscode
+
+# Ignore coverage reports
+/coverage/
+
+# Ignore compiled JS
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+# Ignore uploaded files in development
+/public/uploads
 

@@ -1,29 +1,26 @@
-<h1>Listing toys</h1>
+<div data-controller="toys">
+  <h1>Toy Collection</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>User</th>
-    <th>Owner</th>
-    <th>Tag</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div id="msg" data-toys-target="message" class="alert alert-success hidden">
+    Your changes have been saved successfully.
+  </div>
 
-<% @toys.each do |toy| %>
-  <tr>
-    <td><%= toy.name %></td>
-    <td><%= toy.user %></td>
-    <td><%= toy.owner %></td>
-    <td><%= toy.tag %></td>
-    <td><%= link_to 'Show', toy %></td>
-    <td><%= link_to 'Edit', edit_toy_path(toy) %></td>
-    <td><%= link_to 'Remove', toy, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <div class="sorting-header">
+    <ul id="nav">
+      <li id="name" data-action="click->toys#sortByName">Name</li>
+      <li id="owner" data-action="click->toys#sortByOwner">Owner</li>
+      <li id="tracking" data-action="click->toys#sortByTag">Tag</li>
+      <li id="loaned" data-action="click->toys#sortByUser">User</li>
+    </ul>
+  </div>
 
-<br />
+  <div id="contentArea" data-toys-target="table">
+    <!-- This will be populated by the Stimulus controller -->
+  </div>
 
-<%= link_to 'New Toy', new_toy_path %>
+  <div class="actions">
+    <button id="addToy" data-toys-target="addButton" data-action="click->toys#addToy" class="btn btn-primary">
+      Add New Toy
+    </button>
+  </div>
+</div>

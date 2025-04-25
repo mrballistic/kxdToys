@@ -1,31 +1,41 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'rails', '3.0.8'
+ruby '3.2.2'  # Use a modern Ruby version
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', '~> 7.1.3'
+gem 'sqlite3', '~> 1.6.6'
+gem 'puma', '~> 6.4'  # Modern web server
 
-gem 'sqlite3'
+# Asset handling
+gem 'sprockets-rails'
+gem 'importmap-rails'
+gem 'turbo-rails'
+gem 'stimulus-rails'
 
-# Use unicorn as the web server
-# gem 'unicorn'
+# API support
+gem 'jbuilder'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', require: false
 
-# To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-# gem 'ruby-debug'
-# gem 'ruby-debug19', :require => 'ruby-debug'
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
+group :development, :test do
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'debug', platforms: %i[ mri mingw x64_mingw ]
+end
 
-# Bundle gems for the local environment. Make sure to
-# put test-only gems in this group so their generators
-# and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
+group :development do
+  # Use console on exceptions pages
+  gem 'web-console'
+  
+  # Add speed badges to your Chrome dev tools
+  # gem 'rack-mini-profiler'
+end
+
+group :test do
+  # Use system testing
+  gem 'capybara'
+  gem 'selenium-webdriver'
+end

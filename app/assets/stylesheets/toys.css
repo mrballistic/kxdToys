@@ -1,0 +1,161 @@
+/* Modern styling for toys functionality */
+
+/* Sorting navigation */
+#nav {
+  display: flex;
+  list-style: none;
+  background-color: #f0f0f0;
+  padding: 10px 0;
+  margin: 0 0 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+#nav li {
+  margin: 0 15px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #555;
+}
+
+#nav li:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* Toy listing */
+.eq {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  list-style: none;
+  margin: 0;
+}
+
+.eq.stripe {
+  background-color: #f9f9f9;
+}
+
+.eq.activeStripe {
+  background-color: #f0f8ff;
+}
+
+.eq li {
+  margin: 0;
+  padding: 5px 10px;
+}
+
+.eq .c1 { flex: 2; } /* Name */
+.eq .c2 { flex: 2; } /* Owner */
+.eq .c3 { flex: 2; } /* Tag */
+.eq .c4 { flex: 1; } /* User */
+.eq .c5 { flex: 0; } /* Edit */
+
+.edit {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.edit::before {
+  content: "✏️"; /* Using an emoji instead of the missing image */
+}
+
+/* Form styling */
+.outerForm {
+  max-width: 600px;
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+.formTitle {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.stdForm {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Button styling to replace jQuery UI buttons */
+.submitButton, .deleteButton, .btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton, .btn-primary {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.submitButton:hover, .btn-primary:hover {
+  background-color: #45a049;
+}
+
+.deleteButton, .btn-danger {
+  background-color: #f44336;
+  color: white;
+}
+
+.deleteButton:hover, .btn-danger:hover {
+  background-color: #d32f2f;
+}
+
+#addToy {
+  margin: 20px 0;
+}
+
+/* Alert message styling */
+.alert {
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 4px;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  color: #3c763d;
+  border: 1px solid #d6e9c6;
+}
+
+.alert-danger {
+  background-color: #f2dede;
+  color: #a94442;
+  border: 1px solid #ebccd1;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Reset browser default styles */
+* {
+  box-sizing: border-box;
+}

@@ -1,6 +1,6 @@
-<%= form_for(@toy) do |f| %>
+<%= form_with(model: @toy) do |f| %>
   <% if @toy.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
       <h2><%= pluralize(@toy.errors.count, "error") %> prohibited this toy from being saved:</h2>
 
       <ul>
@@ -11,28 +11,27 @@
     </div>
   <% end %>
 
-	<div class="outerForm">
+	<div class="outerForm" data-controller="toys">
 	  <div class="field">
-	    <%= f.label( :name, :class => 'formTitle' ) %>
-	    <%= f.text_field( :name, :size => 60, :class => 'stdForm' ) %>
+	    <%= f.label :name, class: 'formTitle' %>
+	    <%= f.text_field :name, size: 60, class: 'stdForm' %>
 	  </div>
 	  <div class="field">
-	    <%= f.label( :tag, :class => 'formTitle' ) %>
-	    <%= f.text_field( :tag, :size => 60, :class => 'stdForm' ) %>
+	    <%= f.label :tag, class: 'formTitle' %>
+	    <%= f.text_field :tag, size: 60, class: 'stdForm' %>
 	  </div>
 	  <div class="field">
-	    <%= f.label( :loaned, :class => 'formTitle' ) %>
-	    <%= f.text_field( :user, :size => 40, :class => 'stdForm' ) %>
+	    <%= f.label :loaned, class: 'formTitle' %>
+	    <%= f.text_field :user, size: 40, class: 'stdForm' %>
 	  </div>
 	  <div class="field">
-	    <%= f.label( :owner, :class => 'formTitle' ) %>
-	    <%= f.text_field( :owner, :size => 40, :class => 'stdForm' ) %>
+	    <%= f.label :owner, class: 'formTitle' %>
+	    <%= f.text_field :owner, size: 40, class: 'stdForm' %>
 	  </div>
 
 	  <div class="actions">
-	    <a class="deleteButton" href="." data-confirm="Are you sure?" data-method="delete" rel="nofollow">delete</a>
-	    <a class="submitButton" href="#" rel="nofollow">submit</a>
-	    <!-- <%= f.submit( :class => 'submitButton' ) %> -->
+	    <%= link_to "Delete", @toy, class: "deleteButton", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } unless @toy.new_record? %>
+	    <button type="submit" class="submitButton"><%= @toy.new_record? ? "Create" : "Update" %></button>
 	  </div>
   </div>
 <% end %>
