@@ -33,6 +33,18 @@ The application stores toy information with the following attributes:
 - **tag**: A tag or category for the toy (required)
 - **user**: Additional user information (optional)
 
+```mermaid
+classDiagram
+    class Toy {
+        +string name
+        +string owner
+        +string tag
+        +string user
+        +datetime created_at
+        +datetime updated_at
+    }
+```
+
 ## API Usage
 
 The application provides a simple API for toy management:
