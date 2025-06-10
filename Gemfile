@@ -22,7 +22,8 @@ gem 'bootsnap', require: false
 gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Update rack to the newest version
-gem 'rack', '>= 3.0.0'
+gem 'rack', '>= 3.1.14'
+gem 'rack-session', '~> 2.1.1'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
