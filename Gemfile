@@ -11,6 +11,7 @@ gem 'sprockets-rails'
 gem 'importmap-rails'
 gem 'turbo-rails'
 gem 'stimulus-rails'
+gem 'thor', '>= 1.3.2'
 
 # API support
 gem 'jbuilder'
