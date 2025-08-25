@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'  # Use a modern Ruby version
 
-gem 'rails', '~> 7.1.3'
-gem 'activerecord', '7.1.3.4'
-gem 'activestorage', '7.1.3.4'
+gem 'rails'
+gem 'activerecord'
+gem 'activestorage'
 gem 'sqlite3'
 gem 'puma'  # Modern web server
 
