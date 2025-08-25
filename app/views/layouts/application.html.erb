@@ -11,28 +11,33 @@
   
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-  <link href='https://fonts.googleapis.com/css?family=Droid+Sans&display=swap' rel='stylesheet'>
-  
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+ 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/toys.css">
   <%= javascript_importmap_tags %>
 </head>
 <body>
   <div id="container">
-    <header id="hdr">
-      <a href="/"><img src="/img/base/header.png" alt="header" width="756" height="58" /></a>
+    <header id="hdr" class="main-header-bar">
+  <div class="main-header-content">
+        <h1 class="main-header-title">Toy Collection</h1>
+  <button id="addToy" data-controller="toys" data-toys-target="addButton" data-action="click->toys#addToy" class="main-header-add-btn">
+          + Add New Toy
+        </button>
+      </div>
     </header>
     
-    <div id="main" role="main">
+    <div id="main" role="main" class="main1">
       <div id="editHeader"></div>
-      <div id="contentArea">
-        <%= render "shared/flash" if flash.any? %>
-        <%= yield %>
+      <div class="toy-table-area">
+        <div id="contentArea">
+          <%= render "shared/flash" if flash.any? %>
+          <%= yield %>
+        </div>
       </div>
     </div>
     
     <footer id="ftr">
-      <img src="/img/base/bottom.png" alt="bottom" width="757" height="22" />
     </footer>
   </div> <!-- eo #container -->
 </body>

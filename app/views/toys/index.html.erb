@@ -1,26 +1,36 @@
+
 <div data-controller="toys">
-  <h1>Toy Collection</h1>
+  <!-- Title now in header -->
 
   <div id="msg" data-toys-target="message" class="alert alert-success hidden">
     Your changes have been saved successfully.
   </div>
 
-  <div class="sorting-header">
-    <ul id="nav">
-      <li id="name" data-action="click->toys#sortByName">Name</li>
-      <li id="owner" data-action="click->toys#sortByOwner">Owner</li>
-      <li id="tracking" data-action="click->toys#sortByTag">Tag</li>
-      <li id="loaned" data-action="click->toys#sortByUser">User</li>
-    </ul>
+  <div class="toy-header">
+    <div class="c1" id="name" data-action="click->toys#sortByName" style="cursor:pointer">Name</div>
+    <div class="c2" id="owner" data-action="click->toys#sortByOwner" style="cursor:pointer">Owner</div>
+    <div class="c3" id="tracking" data-action="click->toys#sortByTag" style="cursor:pointer">Tag</div>
+    <div class="c4" id="loaned" data-action="click->toys#sortByUser" style="cursor:pointer">User</div>
+    <div class="c5"></div>
   </div>
 
   <div id="contentArea" data-toys-target="table">
-    <!-- This will be populated by the Stimulus controller -->
-  </div>
-
-  <div class="actions">
-    <button id="addToy" data-toys-target="addButton" data-action="click->toys#addToy" class="btn btn-primary">
-      Add New Toy
-    </button>
+    <% if defined?(@toys) && @toys.any? %>
+      <% @toys.each_with_index do |toy, index| %>
+        <div id="e_<%= toy.id %>" class="eq <%= index.even? ? '' : 'stripe' %>">
+          <div class="c1"><%= toy.name %></div>
+          <div class="c2"><%= toy.owner %></div>
+          <div class="c3"><%= toy.tag %></div>
+          <div class="c4"><%= toy.user %></div>
+          <div class="c5">
+            <a href="/toys/<%= toy.id %>/edit" class="edit-link">
+              <div class="edit"></div>
+            </a>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No toys found.</p>
+    <% end %>
   </div>
 </div>

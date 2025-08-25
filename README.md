@@ -9,6 +9,7 @@ A Ruby on Rails app for managing your toy collection! 🛠️🧸 Easily create,
 - ✅ Data validation
 - 🌐 RESTful API (HTML, XML, JSON)
 - 🎨 Clean, user-friendly interface
+- 🌓 Automatic dark/light mode support with variable-based theming
 
 ## 🛠️ Requirements
 
@@ -89,6 +90,17 @@ Upgraded from Rails 3.0.8 → 7.1.x (April 2025):
 - 🗂️ Asset pipeline update
 - 🔐 Credentials system
 - 🐾 Puma web server
+
+## 🌓 Dark/Light Mode UI
+
+The entire UI—including the toy table, header, "Add New Toy" button, and forms—automatically adapts to your system's dark or light mode preference. All colors are managed with CSS variables for easy theming and maintainability.
+
+**How it works:**
+- Uses `prefers-color-scheme` media query for auto-detection
+- All backgrounds, text, and button colors adapt instantly
+- No inline styles or !important rules—everything is variable-based
+
+You can customize the theme by editing `/public/toys.css` and adjusting the CSS variables under `:root` and the dark mode block.
 
 ## 📄 License
 

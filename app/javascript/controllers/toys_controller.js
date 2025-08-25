@@ -25,9 +25,9 @@ export default class extends Controller {
       const response = await fetch('/toys.json')
       if (!response.ok) throw new Error('Failed to load toys')
       
-      let toys = await response.json()
-      toys.sort(this.compareNames)
-      this.renderTable(toys)
+      this.toys = await response.json()
+      this.toys.sort(this.compareNames)
+      this.renderTable(this.toys)
     } catch (error) {
       console.error('Error loading toys:', error)
     }
@@ -37,55 +37,49 @@ export default class extends Controller {
   sortByName() {
     this.sortToys(this.compareNames)
   }
-  
+
   sortByOwner() {
     this.sortToys(this.compareOwner)
   }
-  
+
   sortByTag() {
     this.sortToys(this.compareID)
   }
-  
+
   sortByUser() {
     this.sortToys(this.compareUser)
   }
-  
-  async sortToys(compareFn) {
-    try {
-      const response = await fetch('/toys.json')
-      if (!response.ok) throw new Error('Failed to load toys')
-      
-      let toys = await response.json()
-      toys.sort(compareFn)
-      this.renderTable(toys)
-    } catch (error) {
-      console.error('Error sorting toys:', error)
-    }
+
+  // Sorts the toys array and re-renders the table
+  sortToys(compareFn) {
+    if (!this.toys) return;
+    this.toys.sort(compareFn);
+    this.renderTable(this.toys);
   }
-  
+
   // Comparison functions for sorting
   compareNames = (a, b) => {
-    const nameA = a.toy?.name?.toLowerCase() || ''
-    const nameB = b.toy?.name?.toLowerCase() || ''
-    return nameA < nameB ? -1 : nameA > nameB ? 1 : 0
+    const aName = a.name?.toLowerCase() || '';
+    const bName = b.name?.toLowerCase() || '';
+    return aName < bName ? -1 : aName > bName ? 1 : 0;
   }
-  
+
   compareOwner = (a, b) => {
-    const nameA = a.toy?.owner?.toLowerCase() || ''
-    const nameB = b.toy?.owner?.toLowerCase() || ''
-    return nameA < nameB ? -1 : nameA > nameB ? 1 : 0
+    const aOwner = a.owner?.toLowerCase() || '';
+    const bOwner = b.owner?.toLowerCase() || '';
+    return aOwner < bOwner ? -1 : aOwner > bOwner ? 1 : 0;
   }
-  
+
   compareID = (a, b) => {
-    const nameA = a.toy?.tag?.toLowerCase() || ''
-    const nameB = b.toy?.tag?.toLowerCase() || ''
-    return nameA < nameB ? -1 : nameA > nameB ? 1 : 0
+    const aTag = a.tag?.toLowerCase() || '';
+    const bTag = b.tag?.toLowerCase() || '';
+    return aTag < bTag ? -1 : aTag > bTag ? 1 : 0;
   }
-  
+
   compareUser = (a, b) => {
-    const nameA = a.toy?.user?.toLowerCase() || ''
-    const nameB = b.toy?.user?.toLowerCase() || ''
-    return nameA > nameB ? -1 : nameA < nameB ? 1 : 0
+    const aUser = a.user?.toLowerCase() || '';
+    const bUser = b.user?.toLowerCase() || '';
+    return aUser > bUser ? -1 : aUser < bUser ? 1 : 0;
   }
   
   // Render the table with toys data
@@ -93,46 +87,44 @@ export default class extends Controller {
     if (!this.hasTableTarget) return
     
     const tableHTML = toys.map((item, index) => {
-      const toy = item.toy
       const isEven = index % 2 === 0
-      
       return `
-        <ul id="e_${toy.id}" class="eq ${isEven ? '' : 'stripe'}">
-          <li class="c1">${toy.name}</li>
-          <li class="c2">${toy.owner}</li>
-          <li class="c3">${toy.tag}</li>
-          <li class="c4">${toy.user || ''}</li>
-          <li class="c5">
-            <a href="/toys/${toy.id}/edit" class="edit-link">
+        <div id="e_${item.id}" class="eq ${isEven ? '' : 'stripe'}">
+          <div class="c1">${item.name}</div>
+          <div class="c2">${item.owner}</div>
+          <div class="c3">${item.tag}</div>
+          <div class="c4">${item.user || ''}</div>
+          <div class="c5">
+            <a href="/toys/${item.id}/edit" class="edit-link">
               <div class="edit"></div>
             </a>
-          </li>
-        </ul>
+          </div>
+        </div>
       `
     }).join('')
-    
+
     this.tableTarget.innerHTML = tableHTML
-    
+
     // Add event listeners to edit buttons
     this.tableTarget.querySelectorAll('.edit-link').forEach(link => {
       link.addEventListener('mouseenter', () => {
         link.querySelector('.edit').style.opacity = '0.8'
       })
-      
       link.addEventListener('mouseleave', () => {
         link.querySelector('.edit').style.opacity = '0.5'
       })
     })
-    
+
     // Add hover effect to rows
     this.tableTarget.querySelectorAll('.eq').forEach(row => {
       row.addEventListener('mouseenter', () => {
-        row.querySelector('.edit').style.opacity = '0.5'
+        const edit = row.querySelector('.edit')
+        if (edit) edit.style.opacity = '0.5'
         row.classList.add('activeStripe')
       })
-      
       row.addEventListener('mouseleave', () => {
-        row.querySelector('.edit').style.opacity = '0'
+        const edit = row.querySelector('.edit')
+        if (edit) edit.style.opacity = '0'
         row.classList.remove('activeStripe')
       })
     })

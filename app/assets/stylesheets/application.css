@@ -1,3 +1,11 @@
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body, html {
+	font-family: 'Inter', system-ui, sans-serif;
+	background: #f7f8fa;
+	color: #222;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2011_06_10_194256) do
+ActiveRecord::Schema[8.0].define(version: 2011_06_10_194256) do
   create_table "toys", force: :cascade do |t|
     t.string "name", limit: 255
     t.string "user", limit: 255
@@ -19,5 +19,4 @@ ActiveRecord::Schema[7.1].define(version: 2011_06_10_194256) do
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
   end
-
 end
