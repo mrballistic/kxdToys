@@ -1,9 +1,8 @@
 require 'test_helper'
 
-class HomeControllerTest < ActionController::TestCase
+class HomeControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get :index
-    assert_response :success
+    get root_url
+    assert_redirected_to toys_path
   end
-
 end

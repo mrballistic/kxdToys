@@ -1,49 +1,48 @@
 require 'test_helper'
 
-class ToysControllerTest < ActionController::TestCase
+class ToysControllerTest < ActionDispatch::IntegrationTest
   setup do
     @toy = toys(:one)
   end
 
   test "should get index" do
-    get :index
+    get toys_url
     assert_response :success
-    assert_not_nil assigns(:toys)
   end
 
   test "should get new" do
-    get :new
+    get new_toy_url
     assert_response :success
   end
 
   test "should create toy" do
     assert_difference('Toy.count') do
-      post :create, :toy => @toy.attributes
+      post toys_url, params: { toy: { name: @toy.name, owner: @toy.owner, tag: @toy.tag, user: @toy.user } }
     end
 
-    assert_redirected_to toy_path(assigns(:toy))
+    assert_redirected_to root_path(success: true)
   end
 
   test "should show toy" do
-    get :show, :id => @toy.to_param
+    get toy_url(@toy)
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => @toy.to_param
+    get edit_toy_url(@toy)
     assert_response :success
   end
 
   test "should update toy" do
-    put :update, :id => @toy.to_param, :toy => @toy.attributes
-    assert_redirected_to toy_path(assigns(:toy))
+    patch toy_url(@toy), params: { toy: { name: @toy.name, owner: @toy.owner, tag: @toy.tag, user: @toy.user } }
+    assert_redirected_to root_path(success: true)
   end
 
   test "should destroy toy" do
     assert_difference('Toy.count', -1) do
-      delete :destroy, :id => @toy.to_param
+      delete toy_url(@toy)
     end
 
-    assert_redirected_to toys_path
+    assert_redirected_to root_path(success: true)
   end
 end
