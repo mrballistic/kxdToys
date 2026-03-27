@@ -66,3 +66,4 @@
 
 
 /config/credentials/development.key
+db/test.sqlite3
