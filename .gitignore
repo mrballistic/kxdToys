@@ -67,3 +67,6 @@
 
 /config/credentials/development.key
 db/test.sqlite3
+
+# Locally installed gems
+/vendor/bundle
