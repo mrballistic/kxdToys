@@ -25,7 +25,7 @@ No linting tools (RuboCop, ESLint) are configured.
 
 ## Architecture
 
-**kxdToys** is a Rails 7.1 app (Ruby 3.2.2, SQLite3) for managing toy collections. It was upgraded from Rails 3.0.8 in April 2025.
+**kxdToys** is a Rails 8.1 app (Ruby 4.0.9, SQLite3) for managing toy collections. It was upgraded from Rails 3.0.8 in April 2025.
 
 ### Data model
 

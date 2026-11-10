@@ -109,7 +109,7 @@ The application uses a combination of:
 ## Development Notes
 
 ### Running the Application
-1. Install Ruby 3.2.2 or later
+1. Install Ruby 4.0.9 or later
 2. Run `bundle install` to install dependencies
 3. Run `bin/rails db:migrate` to set up the database
 4. Start the server with `bin/rails server`

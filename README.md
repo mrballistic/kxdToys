@@ -13,7 +13,7 @@ A Ruby on Rails app for managing your toy collection! 🛠️🧸 Easily create,
 
 ## 🛠️ Requirements
 
-- 💎 Ruby 3.2.2+
+- 💎 Ruby 4.0.9+
 - 🚂 Rails 7.1.x
 - 🗄️ SQLite3
 - 📦 Bundler
